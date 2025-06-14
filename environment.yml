@@ -1,5 +1,0 @@
-name: Hate
-channels:
-  - defaults
-  - https://repo.anaconda.com/pkgs/main
-  - https://repo.anaconda.com/pkgs/r
