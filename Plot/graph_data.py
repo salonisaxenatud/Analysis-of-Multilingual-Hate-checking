@@ -1,21 +1,16 @@
-# Re-imports and data preparation since previous context was reset
 import pandas as pd
 import numpy as np
 
-# Load original file again
 file_path = "final-multi-prompt(corresponds to phrase language).csv"
 df = pd.read_csv(file_path)
 
-# Helper to parse logits
 def parse_logits(logit_str):
     return np.array([float(x) for x in logit_str.split(',')])
 
-# Parameters
 languages = ['polish', 'english', 'hindi']
 models = ['roberta', 'bert']
 sample_size = 500
 
-# Compile sampled data
 compiled_data = []
 
 for lang in languages:
@@ -40,7 +35,6 @@ for lang in languages:
                 'correct': correctness[idx]
             })
 
-# Create DataFrame and export
 compiled_df = pd.DataFrame(compiled_data)
 output_path = "sampled_logit_probabilities.csv"
 compiled_df.to_csv(output_path, index=False)
