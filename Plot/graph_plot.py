@@ -129,7 +129,6 @@ for lang in data["language"].unique():
     plt.grid(True, linestyle="--", linewidth=0.5)
     plt.tight_layout(rect=[0, 0, 0.8, 1])
 
-    # legend outside the plot (right side)
     plt.legend(handles=colour_handles,
                bbox_to_anchor=(1.02, 1), loc="upper left",
                borderaxespad=0.0, title="Prediction")
