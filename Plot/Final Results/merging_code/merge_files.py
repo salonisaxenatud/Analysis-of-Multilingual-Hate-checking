@@ -13,16 +13,16 @@ NO_WORDS  = {"no",  "n", "false", "0"}
 def norm_pred(val):
     if pd.isna(val):
         return np.nan
-    try:                                    # numeric
+    try:                                    
         num = float(val)
         return 0 if num == 0 else 1
-    except ValueError:                      # text
+    except ValueError:                      
         s = str(val).strip().lower()
         if s in YES_WORDS:
             return 1
         if s in NO_WORDS:
             return 0
-    return np.nan                           # fallback
+    return np.nan                           
 
 merged = {ds: None for ds in DATASETS}
 
@@ -47,7 +47,6 @@ for model in os.listdir(ROOT):
             if old in df.columns:
                 new = f"{model.upper()}_{old}"
                 ren[old] = new
-                # normalise predictions to 0/1
                 df[new] = df[old].apply(norm_pred)
 
         if not ren:
